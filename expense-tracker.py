@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-import sys
+import sys, time
 
 @dataclass
 class Expense:
@@ -8,6 +8,30 @@ class Expense:
   amount: int
   createdAt: int
   modifiedAt: int
+
+def load_expenses():
+  # TODO: load expenses from data.json
+  return []
+
+def save_expenses(expenses):
+  # TODO: save expenses to data.json
+  pass
+
+def get_latest_id():
+    # TODO: read last id from data.json
+    return 1
+
+def add_expense(description, amount):
+  expenses = load_expenses()
+  expense = Expense(
+                id=get_latest_id(),
+                description=description, 
+                amount=amount,
+                createdAt=time.time(),
+                modifiedAt=time.time()
+            )
+  expenses.append(expense)
+  save_expenses(expenses)
 
 if __name__ == "__main__":
   if len(sys.argv) < 2:
