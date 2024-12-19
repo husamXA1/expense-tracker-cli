@@ -33,6 +33,13 @@ def add_expense(description, amount):
   expenses.append(expense)
   save_expenses(expenses)
 
+def delete_expense(id):
+  expenses = load_expenses()
+  for expense in expenses:
+    if expense.id == id:
+      expenses.remove(expense)
+  save_expenses(expenses)
+
 if __name__ == "__main__":
   if len(sys.argv) < 2:
     print("USAGE: expense-tracker [COMMAND]")
